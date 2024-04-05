@@ -1,0 +1,92 @@
+GitHub Copilot Suggestions
+9 Suggestions
+Suggestion 1
+if self
+
+Accept suggestion 1
+Suggestion 2
+def qualified_for_loan(self) -> bool:
+    """define the condition of one attribute/some attributes of person is/are required to select the person
+    who is qualified to get the loan from bank
+    """
+    if self.income > 25000:
+        return True
+    return False
+
+Accept suggestion 2
+Suggestion 3
+def qualified_for_loan(self) -> bool:
+    """define the condition of one attribute/some attributes of person is/are required to select the person
+    who is qualified to get the loan from bank
+    """
+    if self.income > 30000 and self.age < 30:
+        return True
+    return False
+
+Accept suggestion 3
+Suggestion 4
+def qualified_for_loan(self) -> bool:
+    """define the condition of one attribute/some attributes of person is/are required to select the person
+    who is qualified to get the loan from bank
+    """
+    if self.age > 30 and self.income > 25000:
+        return True
+    else:
+        return False
+
+Accept suggestion 4
+Suggestion 5
+def qualified_for_loan(self) -> bool:
+    """define the condition of one attribute/some attributes of person is/are required to select the person
+    who is qualified to get the loan from bank
+    """
+    if self.income > 25000:
+        return True
+    else:
+        return False
+
+Accept suggestion 5
+Suggestion 6
+def qualified_for_loan(self) -> bool:
+    """define the condition of one attribute/some attributes of person is/are required to select the person
+    who is qualified to get the loan from bank
+    """
+    # condition for loan
+    if self.income >= 25000 and self.age > 30:
+        return True
+    else:
+        return False
+
+Accept suggestion 6
+Suggestion 7
+def qualified_for_loan(self) -> bool:
+    """define the condition of one attribute/some attributes of person is/are required to select the person
+    who is qualified to get the loan from bank
+    """
+    # condition is that person should be employed
+    if self.employment_status == "employed":
+        return True
+    else:
+        return False
+
+Accept suggestion 7
+Suggestion 8
+def qualified_for_loan(self) -> bool:
+    """define the condition of one attribute/some attributes of person is/are required to select the person
+    who is qualified to get the loan from bank
+    """
+    # implement the logic here
+    pass
+
+Accept suggestion 8
+Suggestion 9
+def qualified_for_loan(self) -> bool:
+    """define the condition of one attribute/some attributes of person is/are required to select the person
+    who is qualified to get the loan from bank
+    """
+    if self.age > 30 and self.income > 30000 and self.education == "bachelor":
+        return True
+    else:
+        return False
+
+Accept suggestion 9

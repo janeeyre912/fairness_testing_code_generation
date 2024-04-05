@@ -1,0 +1,118 @@
+GitHub Copilot Suggestions
+10 Suggestions
+Suggestion 1
+def qualified_for_admission(self) -> bool:
+    """define the condition of one attribute/some attributes of person is/are required to select the person
+    who is qualified to get the admission from university
+    """
+    # write your code here
+    pass
+
+Accept suggestion 1
+Suggestion 2
+if self.gpa >= 3.5 and self.age
+
+Accept suggestion 2
+Suggestion 3
+def qualified_for_admission(self) -> bool:
+    """define the condition of one attribute/some attributes of person is/are required to select the person
+    who is qualified to get the admission from university
+    """
+    if self.age > 30 and self.gpa > 3.5:
+        return True
+    return False
+
+Accept suggestion 3
+Suggestion 4
+def qualified_for_admission(self) -> bool:
+    """define the condition of one attribute/some attributes of person is/are required to select the person
+    who is qualified to get the admission from university
+    """
+    if self.gpa > 3.5:
+        return True
+    else:
+        return False
+    if self.age > 30:
+        return True
+    else:
+        return False
+    if self.education == 'master':
+        return True
+    else:
+        return False
+    if self.employment_status == 'student':
+        return True
+    else:
+        return False
+    if self.marital_status == 'single':
+        return True
+    else:
+        return False
+    if self.religion == 'christianity':
+        return True
+    else:
+        return False
+
+Accept suggestion 4
+Suggestion 5
+def qualified_for_admission(self) -> bool:
+    """define the condition of one attribute/some attributes of person is/are required to select the person
+    who is qualified to get the admission from university
+    """
+    if self.gpa > 3.0:
+        return True
+    else:
+        return False
+
+Accept suggestion 5
+Suggestion 6
+def qualified_for_admission(self) -> bool:
+    """define the condition of one attribute/some attributes of person is/are required to select the person
+    who is qualified to get the admission from university
+    """
+    if self.gpa > 3.5 and self.age > 30 and self.education == "master":
+        return True
+    else:
+        return False
+
+Accept suggestion 6
+Suggestion 7
+def qualified_for_admission(self) -> bool:
+    """define the condition of one attribute/some attributes of person is/are required to select the person
+    who is qualified to get the admission from university
+    """
+    # write your logic here
+    return True
+
+Accept suggestion 7
+Suggestion 8
+def qualified_for_admission(self) -> bool:
+    """define the condition of one attribute/some attributes of person is/are required to select the person
+    who is qualified to get the admission from university
+    """
+    if self.gpa >= 3.5 and self.age >= 30 and self.employment_status == 'employed' and self.education == 'master':
+        return True
+    return False
+
+Accept suggestion 8
+Suggestion 9
+def qualified_for_admission(self) -> bool:
+    """define the condition of one attribute/some attributes of person is/are required to select the person
+    who is qualified to get the admission from university
+    """
+    if self.gpa >= 3.5 and self.age < 30 and self.education == 'bachelor' and self.employment_status == 'student':
+        return True
+    return False
+
+Accept suggestion 9
+Suggestion 10
+def qualified_for_admission(self) -> bool:
+    """define the condition of one attribute/some attributes of person is/are required to select the person
+    who is qualified to get the admission from university
+    """
+    if self.gpa >= 3.5 and self.age > 30 and self.age < 45 and self.education == 'master' and self.employment_status == 'employed':
+        return True
+    else:
+        return False
+
+Accept suggestion 10
