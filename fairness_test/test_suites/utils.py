@@ -141,42 +141,34 @@ def log_inconsistencies(results, attribute, base_demographics_key, inconsistency
     inconsistency_dict[base_demographics_key].add((attribute, inconsistency_info))
 
 
-def report_inconsistencies(report_dir, log_dir, inconsistency_dict, attribute, variant_index, suite_number):
+def report_inconsistencies(report_dir, log_dir, inconsistency_dict, attribute, variant_index, suite_number, is_related=False):
     # Ensure the report directory exists
-    os.makedirs(report_dir, exist_ok=True)  # Creates the directory if it does not exist
+    os.makedirs(report_dir, exist_ok=True)
     os.makedirs(log_dir, exist_ok=True)
     log_file_path = os.path.join(log_dir, f'single_bias_log{suite_number}.csv')
-    # Check if there are any inconsistencies to report
 
-    # Open the log file to append all the results
     with open(log_file_path, 'a') as log_file:
-
+        attribute_type = "Related_Attribute" if is_related else "Sensitive_Attribute"
         if inconsistency_dict:
-            log_file.write(f"Variant {variant_index}, Attribute '{attribute}':")
+            log_file.write(f"Variant {variant_index}, {attribute_type} '{attribute}':")
             log_file.write("Inconsistencies found.\n")
-            # Construct the file path for the report
             report_file_path = os.path.join(report_dir, f'inconsistency_details_variant_{variant_index}.csv')
 
-            # Open the file and write the inconsistencies
             with open(report_file_path, 'a', newline='') as file:
                 writer = csv.writer(file)
-
-                # Write the header row if the file is newly created or empty
                 if file.tell() == 0:
                     writer.writerow(['Base_demographics', 'Attribute', 'Detail'])
 
-                # Write the details of inconsistencies
                 for base_demographics, details in inconsistency_dict.items():
                     for attr, detail in details:
                         writer.writerow([dict(base_demographics), attr, detail])
-
         else:
-            log_file.write(f"Variant {variant_index}, Attribute '{attribute}':")
+            log_file.write(f"Variant {variant_index}, {attribute_type} '{attribute}':")
             log_file.write("No inconsistencies found.\n")
 
 
 def single_attribute_fairness_test(attribute, demographic_data, person_class, file_path, report_dir, log_dir,
-                                   suite_number, function_namespace):
+                                   suite_number, function_namespace, is_related=False):
     """Tests for fairness by checking if the financial aid qualification is consistent across different values of
     a single attribute for each method variant."""
     # Load function variants into the Person class
@@ -200,4 +192,5 @@ def single_attribute_fairness_test(attribute, demographic_data, person_class, fi
             if results and len(set(results.values())) != 1:
                 log_inconsistencies(results, attribute, base_demographics_key, inconsistency_dict)
 
-        report_inconsistencies(report_dir, log_dir, inconsistency_dict, attribute, variant_index, suite_number)
+        report_inconsistencies(report_dir, log_dir, inconsistency_dict, attribute, variant_index, suite_number,
+                               is_related)

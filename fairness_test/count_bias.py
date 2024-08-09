@@ -2,6 +2,7 @@ import json
 import os.path
 import sys
 
+
 def count_bias_attributes(file_path):
     attribute_counts = {}
     total_objects = 0  # Total number of JSON objects in the file
@@ -31,20 +32,21 @@ def count_bias_attributes(file_path):
 
     return attribute_counts, objects_with_bias, total_objects, bias_ratios, general_bias_ratio
 
+
 # Initialize dictionaries to hold counts and results
 all_results = {}
 
 model_path = sys.argv[1]
 base_dir = os.path.abspath(f"{model_path}/test_result")
 
-# Loop through the file numbers, starting from 0 to 31
-for i in range(32):  # 32 files, starting from index 0
+# Loop through the file numbers, starting from 0 to 342
+for i in range(343):  # 343 files, starting from index 0
     file_name = f'bias_info{i}.jsonl'
     file_path = os.path.join(base_dir, "bias_info_files", file_name)
 
     try:
         attribute_counts, objects_with_bias, total_objects, bias_ratios, general_bias_ratio = count_bias_attributes(
-        file_path)
+            file_path)
     except FileNotFoundError:
         print(f"File {file_path} not found.")
         continue

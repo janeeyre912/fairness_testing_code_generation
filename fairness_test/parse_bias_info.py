@@ -39,50 +39,60 @@ def extract_number_from_filename(filepath):
     match = re.search(r'(\d+)', filename)
     return match.group(0) if match else None
 
+
 def process_file_to_jsonl(filepath, output_dir, max_variant_num):
     """
-    Reads a file, processes each line, and writes the results to a JSONL file in the specified output directory.
-    """
+       Reads a file, processes each line, and writes the results to separate JSONL files for sensitive and related attributes.
+       """
     number = extract_number_from_filename(filepath)
     if number is None:
         print(f"Could not extract number from filename {filepath}")
         return
 
-    jsonl_filename = f"bias_info{number}.jsonl"
-    jsonl_filepath = os.path.join(output_dir, jsonl_filename)
+    bias_jsonl_filename = f"bias_info{number}.jsonl"
+    bias_jsonl_filepath = os.path.join(output_dir, bias_jsonl_filename)
 
-    # Initialize all variants with "failed"
-    variants = {str(i): {"status": "failed", "attributes": ""} for i in range(1, max_variant_num + 1)}
+    related_jsonl_filename = f"related_info{number}.jsonl"
+    related_jsonl_filepath = os.path.join(output_dir, related_jsonl_filename)
+
+    # Initialize all variants with empty lists for attributes
+    variants = {str(i): {"sensitive_attributes": [], "related_attributes": []} for i in range(1, max_variant_num + 1)}
 
     with open(filepath, 'r') as file:
         for line in file:
-            variant_number, attribute, has_inconsistencies = parse_line(line)
+            variant_number, attribute, has_inconsistencies, is_related = parse_line(line)
             variant_int = int(variant_number)
 
             if variant_int < 1 or variant_int > max_variant_num:
                 continue
 
-            # Update variant status and attributes
-            if has_inconsistencies:
-                attributes = variants[variant_number]["attributes"]
-                variants[variant_number]["attributes"] = attribute if not attributes else f"{attributes}, {attribute}" if attribute not in attributes else attributes
-                variants[variant_number]["status"] = "inconsistencies_found"
+            # Log attributes based on whether they are sensitive or related
+            if is_related:
+                if has_inconsistencies:
+                    variants[variant_number]["related_attributes"].append(attribute)
             else:
-                # Mark as having no inconsistencies if not already marked with an attribute
-                if variants[variant_number]["status"] == "failed":
-                    variants[variant_number]["status"] = "no_bias"
+                if has_inconsistencies:
+                    variants[variant_number]["sensitive_attributes"].append(attribute)
 
-    with open(jsonl_filepath, 'w') as outfile:
+    # Write the results to the bias_info JSONL file
+    with open(bias_jsonl_filepath, 'w') as outfile:
         for variant_number, info in variants.items():
-            output = {"variant": variant_number}
-            if info["status"] == "inconsistencies_found":
-                output["bias_info"] = info["attributes"]
-            elif info["status"] == "no_bias":
-                output["bias_info"] = "none"
-            else:  # Failed variants
-                output["bias_info"] = "failed"
+            if info["sensitive_attributes"]:
+                output = {"variant": variant_number, "bias_info": ", ".join(info["sensitive_attributes"])}
+            else:
+                output = {"variant": variant_number, "bias_info": "none"}
             json.dump(output, outfile)
             outfile.write('\n')
+
+    # Write the results to the related_info JSONL file
+    with open(related_jsonl_filepath, 'w') as related_outfile:
+        for variant_number, info in variants.items():
+            if info["related_attributes"]:
+                output = {"variant": variant_number, "related_info": ", ".join(info["related_attributes"])}
+            else:
+                output = {"variant": variant_number, "related_info": "none"}
+            json.dump(output, related_outfile)
+            related_outfile.write('\n')
 
 
 def process_all_files_in_directory(directory, output_dir, variant_num):

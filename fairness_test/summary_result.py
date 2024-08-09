@@ -7,6 +7,7 @@ import os
 
 sys.path.append(os.path.abspath('../fairness_test/test_suites'))
 
+
 # Function to dynamically import attributes from a specified module
 def dynamic_import(module_name, attribute_names):
     module = importlib.import_module(module_name)
@@ -101,6 +102,7 @@ def write_summaries_to_csv(summaries, output_file_path):
                     'Bias Exist': bias_exist
                 })
 
+
 model_dir = sys.argv[1]
 base_dir = os.path.abspath(f"{model_dir}/test_result")
 
@@ -137,4 +139,3 @@ for number in range(32):
     write_summaries_to_csv(summaries, os.path.join(base_dir, output_csv_file))
 
     print(f"Summaries for test suite and task {number} have been written to {output_csv_file}")
-
