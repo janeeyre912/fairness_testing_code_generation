@@ -11,7 +11,7 @@ base_dir = os.path.abspath(f"{model_dir}/test_result")
 all_file_results = []
 
 # Loop through the file numbers
-for i in range(0, 32):  # Assuming the files are numbered from 1 to 32
+for i in range(0, 343):  # Assuming the files are numbered from 1 to 32
     file_name = f"summary_output_suite_task_{i}.csv"
     file_path = os.path.join(base_dir, "summary_bias", file_name)
     attribute_bias_counts = {}  # Reset for each file
