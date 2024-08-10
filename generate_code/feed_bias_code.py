@@ -94,7 +94,8 @@ def code_conversation(style, gc, qs, temp, model_name):
         time.sleep(20)
 
         response = anthropic_client.messages.create(
-            model="claude-instant-1.2",
+            #model="claude-instant-1.2",
+            model="claude-3-haiku-20240307",
             max_tokens=512,
             temperature=temp,
             system=style,
