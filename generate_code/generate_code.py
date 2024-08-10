@@ -92,7 +92,8 @@ def code_conversation(style, qs, temp, model_name):
         time.sleep(20)
 
         response = anthropic_client.messages.create(
-            model="claude-instant-1.2",
+            #model="claude-instant-1.2",
+            model="claude-3-haiku-20240307",
             max_tokens=512,
             temperature=temp,
             system=style,
@@ -135,7 +136,7 @@ prompt_styles = {
 def generate_code_from_prompts(input_file_path, output_dir, iterations, temperature, style, model_name):
     for json_obj in read_jsonl_file(input_file_path):
         task_id = json_obj.get("task_id", "default")
-        prompt = json_obj.get(" prompt", "")  # Adjust the key name if needed
+        prompt = json_obj.get("prompt", "")  # Adjust the key name if needed
         if prompt:
             jsonl_output_file_path = os.path.join(output_dir, f"task_{task_id}_generated_code.jsonl")
             os.makedirs(os.path.dirname(jsonl_output_file_path), exist_ok=True)
