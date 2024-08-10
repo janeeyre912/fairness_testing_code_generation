@@ -27,11 +27,11 @@ echo "===================="
 
 
 # Delete the previous result files
-#rm -rf "$MODEL_DIR""/test_result"
+rm -rf "$MODEL_DIR""/test_result"
 
 #generate and save responses from model
 cd ../generate_code || exit
-#python generate_code.py "$DATA_PATH" "$MODEL_DIR"/response "$SAMPLING" "$TEMPERATURE" "$PROMPT_STYLE" "$MODEL_NAME"
+python generate_code.py "$DATA_PATH" "$MODEL_DIR"/response "$SAMPLING" "$TEMPERATURE" "$PROMPT_STYLE" "$MODEL_NAME"
 
 #run test suits
 cd ../fairness_test/test_suites/ || exit
