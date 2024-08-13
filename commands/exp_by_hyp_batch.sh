@@ -1,7 +1,8 @@
+CURRENT_DIR=$(pwd)
 SAMPLING="10"
 STYLE="default"
-DATA_PATH="../dataset/prompts_32.jsonl"
-OUTPUT_PATH="../outputs/"
+DATA_PATH="$CURRENT_DIR""/../dataset/prompts.jsonl"
+OUTPUT_PATH="$CURRENT_DIR""/../outputs/"
 MODEL_NAME=$1
 MODEL_DIR="$OUTPUT_PATH$MODEL_NAME"
 
@@ -21,5 +22,5 @@ fi
 for i in 0.2 0.4 0.6 0.8 1.0
 do
     temperature="${i/./}"
-    bash gen_and_exp.sh "$SAMPLING" $i "$STYLE" $DATA_PATH "../outputs/hyp_variations/""$MODEL_NAME""$temperature""$STYLE" "$MODEL_NAME"
+    bash gen_and_exp.sh "$SAMPLING" $i "$STYLE" $DATA_PATH "$CURRENT_DIR""/../outputs/hyp_variations/""$MODEL_NAME""$temperature""$STYLE" "$MODEL_NAME"
 done
