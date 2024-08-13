@@ -16,19 +16,22 @@ load_dotenv()
 
 gpt_client = OpenAI(
     # defaults to os.environ.get("OPENAI_API_KEY")
-    api_key=os.getenv("OPENAI_API_KEY"),
+    api_key="sk-VJpU0ZMvZXztfJVz2RokjS2laEAyQhUyVQvk2tjER3T3BlbkFJpofqPCfxjxWotv4VaU-nmpP-9QFhb7PViHMpqdeU8A",
+    #api_key=os.getenv("OPENAI_API_KEY"),
 )
 
 llama_client = OpenAI(
-  api_key=os.environ.get("TOGETHER_API_KEY"),
-  base_url='https://api.together.xyz/v1',
+    #api_key=os.environ.get("TOGETHER_API_KEY"),
+    api_key="56c720d79764fc47fd831f48b95bb9a357d7517fe58394d2ab002e4f6c4ada1b",
+    base_url='https://api.together.xyz/v1',
 )
 
 # set google client using: https://cloud.google.com/vertex-ai/docs/start/client-libraries
 google_client = datastore.Client()
 
 anthropic_client = anthropic.Anthropic(
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    api_key = "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",
+    #api_key = os.environ.get("ANTHROPIC_API_KEY")
 )
 
 def read_jsonl_file(file_path):
