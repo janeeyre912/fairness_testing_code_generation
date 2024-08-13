@@ -1,7 +1,7 @@
 ## LLAMA
 
 #!/encs/bin/bash
-#SBATCH -J pass_finder --partition=pa --mem=16GB --gpus=1  --account=jinqiuy
+#SBATCH -J llama_job --partition=pa --mem=16GB --gpus=1  --account=jinqiuy
 #SBATCH --mail-type=BEGIN,END
 #SBATCH --mail-user=l_ling20@encs.concordia.ca
 # Specify the output file name
