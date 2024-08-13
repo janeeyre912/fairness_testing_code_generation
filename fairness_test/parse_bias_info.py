@@ -13,7 +13,7 @@ def parse_line(line):
     variant_number = variant.split(' ')[-1]
     attribute = re.search(r"Attribute '([^']+)'", attribute_with_prefix).group(1)
     has_inconsistencies = status == 'Inconsistencies found.'
-    return variant_number, attribute, has_inconsistencies
+    return variant_number, attribute, has_inconsistencies, "Related" in attribute_with_prefix
 
 
 def parse_line_after_debias(line):
