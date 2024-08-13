@@ -1,5 +1,3 @@
-## GPT
-
 #!/encs/bin/bash
 #SBATCH -J gpt_job --partition=pa --mem=16GB --gpus=1  --account=jinqiuy
 #SBATCH --mail-type=BEGIN,END
