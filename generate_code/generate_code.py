@@ -6,9 +6,9 @@ import time
 from openai import OpenAI
 from dotenv import load_dotenv
 
-from google.cloud import datastore
-from vertexai.preview.language_models import CodeGenerationModel
-from vertexai.language_models import CodeChatModel
+#from google.cloud import datastore
+#from vertexai.preview.language_models import CodeGenerationModel
+#from vertexai.language_models import CodeChatModel
 
 import anthropic
 
