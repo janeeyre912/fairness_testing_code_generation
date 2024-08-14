@@ -1,10 +1,9 @@
 CURRENT_DIR=$(pwd)
+
 SAMPLING="10"
 STYLE="default"
 DATA_PATH="$CURRENT_DIR""/../dataset/prompts.jsonl"
-OUTPUT_PATH="$CURRENT_DIR""/../outputs/"
 MODEL_NAME=$1
-MODEL_DIR="$OUTPUT_PATH$MODEL_NAME"
 
 if [ "$#" -le 0 ]; then
     echo "Usage: bash exp_by_hyp_batch.sh [model_name]"
@@ -19,7 +18,7 @@ if [ "$#" -ge 3 ]; then
     STYLE=$3
 fi
 
-for i in 0.2 0.4 0.6 0.8 1.0
+for i in 1.0 0.2 0.4 0.6 0.8
 do
     temperature="${i/./}"
     bash gen_and_exp.sh "$SAMPLING" $i "$STYLE" $DATA_PATH "$CURRENT_DIR""/../outputs/hyp_variations/""$MODEL_NAME""$temperature""$STYLE" "$MODEL_NAME"
