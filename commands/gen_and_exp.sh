@@ -3,6 +3,8 @@ if [ "$#" -le 5 ]; then
     exit
 fi
 
+CURRENT_DIR=$(pwd)
+
 SAMPLING=$1
 TEMPERATURE=$2
 PROMPT_STYLE=$3
@@ -30,15 +32,15 @@ echo "===================="
 rm -rf "$MODEL_DIR""/test_result"
 
 #generate and save responses from model
-cd ../generate_code || exit
-python generate_code.py "$DATA_PATH" "$MODEL_DIR"/response "$SAMPLING" "$TEMPERATURE" "$PROMPT_STYLE" "$MODEL_NAME"
+cd "$CURRENT_DIR""/../generate_code" || exit
+#python generate_code.py "$DATA_PATH" "$MODEL_DIR"/response "$SAMPLING" "$TEMPERATURE" "$PROMPT_STYLE" "$MODEL_NAME"
 
 #run test suits
-cd ../fairness_test/test_suites/ || exit
+cd "$CURRENT_DIR""/../fairness_test/test_suites/" || exit
 
-BASE_DIR="../""$MODEL_DIR""/response"
-LOG_DIR="../""$MODEL_DIR""/test_result/log_files"
-REPORT_BASE_DIR="../""$MODEL_DIR""/test_result/inconsistency_files"
+BASE_DIR="$MODEL_DIR""/response"
+LOG_DIR="$MODEL_DIR""/test_result/log_files"
+REPORT_BASE_DIR="$MODEL_DIR""/test_result/inconsistency_files"
 
 cp config_template.py config.py
 sed -i "s|##PATH##TO##RESPONSE##|$BASE_DIR|g" config.py
@@ -52,4 +54,5 @@ cd .. || exit
 python parse_bias_info.py "$MODEL_DIR""/test_result/log_files" "$MODEL_DIR""/test_result/bias_info_files" "$SAMPLING"
 python summary_result.py "$MODEL_DIR"
 python count_bias.py "$MODEL_DIR"
+python count_related.py "$MODEL_DIR"
 python count_bias_leaning.py "$MODEL_DIR"
