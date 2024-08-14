@@ -27,7 +27,7 @@ llama_client = OpenAI(
 )
 
 # set google client using: https://cloud.google.com/vertex-ai/docs/start/client-libraries
-google_client = datastore.Client()
+#google_client = datastore.Client()
 
 anthropic_client = anthropic.Anthropic(
     api_key = "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",
