@@ -4,8 +4,6 @@
 #SBATCH --mail-user=l_ling20@encs.concordia.ca
 # Specify the output file name
 #SBATCH -o gpt.log
-module load anaconda3/2023.03/default
-
 
 conda init bash
 source ~/.bashrc
