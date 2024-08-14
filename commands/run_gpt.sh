@@ -5,10 +5,12 @@
 # Specify the output file name
 #SBATCH -o gpt.log
 module load anaconda3/2023.03/default
-conda activate /speed-scratch/l_ling20/FairT
+
 
 conda init bash
 source ~/.bashrc
+
+conda activate /speed-scratch/l_ling20/FairT
 
 bash exp_by_hyp_batch.sh gpt 5 default
 bash exp_by_style_batch.sh gpt 5 1.0
