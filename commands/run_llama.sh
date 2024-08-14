@@ -8,7 +8,6 @@
 conda init bash
 source ~/.bashrc
 
-module load anaconda3/2023.03/default
 conda activate /speed-scratch/l_ling20/FairT
 
 bash exp_by_hyp_batch.sh llama 5 default
