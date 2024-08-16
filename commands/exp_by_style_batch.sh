@@ -25,7 +25,7 @@ temperature="${TEMPERATURE/./}"
 
 for i in "default" "chain_of_thoughts" "positive_chain_of_thoughts"
 do
-    bash gen_and_exp.sh "$SAMPLING" "$TEMPERATURE" $i $DATA_PATH "$OUTPUT_PATH""/../outputs/styles/""$MODEL_NAME""$temperature"$i "$MODEL_NAME"
+    bash gen_and_exp.sh "$SAMPLING" "$TEMPERATURE" $i $DATA_PATH "$CURRENT_DIR""/../outputs/styles/""$MODEL_NAME""$temperature"$i "$MODEL_NAME"
 done
 
 #bash gen_and_exp.sh "$SAMPLING" "$TEMPERATURE" $STYLE_PARTIAL "$DATA_PATH_PARTIAL" "../outputs/styles/""$MODEL_NAME""$temperature""$STYLE_PARTIAL" "$MODEL_NAME"
