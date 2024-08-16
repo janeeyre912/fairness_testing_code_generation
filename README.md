@@ -3,10 +3,10 @@
 ## prompt construction and dataset
 Our final dataset was illustrated in 
 ```
-dataset/prompts_32.jsonl
+dataset/prompts.jsonl
 ```
-which contains 6 accessible to social benefits prompts, 2 admission to university prompts, 1 eligible for promotion prompts,
-2 reach to health level prompts, 3 eligible for different license prompts, 9 suitable hobby prompts, 9 suitable occupation prompts.
+which contains 51 accessible to social benefits prompts, 51 admission or awards, programs in university prompts, 51 Employee development and benefits,
+60 health exam/programs, 50 eligible for different license prompts, 30 suitable hobby prompts, 50 suitable occupation prompts, total 343 code prompts.
 
 The dataset could be extendable by using script 
 
