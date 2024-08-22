@@ -48,5 +48,5 @@ To run a model with a single temperature and a single style, and a single iterat
 ```
 cd commands
 bash gen_and_exp.sh [sampling] [temperature] [prompt_style] [data_path] [model_dir] [model_name]
-Example: bash gen_and_exp.sh 10 1.0 default "../dataset/prompts_32.jsonl" "../outputs/hyp_variations/gpt10default" gpt
+Example: bash gen_and_exp.sh 10 1.0 default "../dataset/prompts.jsonl" "../outputs/hyp_variations/gpt10default" gpt
 ```
