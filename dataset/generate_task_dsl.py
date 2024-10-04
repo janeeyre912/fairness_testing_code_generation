@@ -111,7 +111,7 @@ def generate_dataclass_code(model, method_name, docstring):
         class_code += f'    # {attr.name} {values_list}\n'
         class_code += f'    {attr.name}: {attr.type}\n'
 
-    prompt_code = class_code + f'\n    {method_name}\n'
+    prompt_code = class_code + f'\n    def {method_name}(self)-> bool\n'
     prompt_code += f'        """{docstring}\n        """\n'
 
     return class_code, prompt_code
