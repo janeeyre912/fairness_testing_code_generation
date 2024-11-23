@@ -17,6 +17,7 @@ generate_task_dsl.py
 ## Environment Setup
 Install the libraries in a Conda environment using the following commands.
 ```
+cd commands
 ./setup.sh
 ```
 
