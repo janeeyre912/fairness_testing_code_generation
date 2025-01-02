@@ -1,4 +1,4 @@
-# Evaluating Social Bias in Large Language Model-Based Code Generation
+# Bias Unveiled: Investigating Social Bias in LLM-Generated Code
 
 ## prompt construction and dataset
 Our final dataset was illustrated in 
